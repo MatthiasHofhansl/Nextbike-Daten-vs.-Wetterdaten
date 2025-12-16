@@ -1,4 +1,4 @@
-date,temperature_2m,rain,snowfall,relative_humidity_2m,cloud_cover,wind_speed_10m,weather_code,sunshine_duration,is_day
+date,temperature_2m (°C),rain (mm),snowfall (mm),relative_humidity_2m (%),cloud_cover (%),wind_speed_10m (km/h),weather_code,sunshine_duration (seconds),"is_day (1 = yes, 0 = no)"
 2025-09-13 23:00:00+00:00,14.202,0.5,0.0,95.55804,100.0,14.2575445,53.0,0.0,0.0
 2025-09-14 00:00:00+00:00,14.102,1.0,0.0,96.4923,100.0,11.709688,55.0,0.0,0.0
 2025-09-14 01:00:00+00:00,14.152,0.1,0.0,95.55633,99.0,10.742848,51.0,0.0,0.0

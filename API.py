@@ -53,15 +53,15 @@ hourly_data = {"date": pd.date_range(
 	inclusive = "left"
 )}
 
-hourly_data["temperature_2m"] = hourly_temperature_2m
-hourly_data["rain"] = hourly_rain
-hourly_data["snowfall"] = hourly_snowfall
-hourly_data["relative_humidity_2m"] = hourly_relative_humidity_2m
-hourly_data["cloud_cover"] = hourly_cloud_cover
-hourly_data["wind_speed_10m"] = hourly_wind_speed_10m
+hourly_data["temperature_2m (°C)"] = hourly_temperature_2m
+hourly_data["rain (mm)"] = hourly_rain
+hourly_data["snowfall (mm)"] = hourly_snowfall
+hourly_data["relative_humidity_2m (%)"] = hourly_relative_humidity_2m
+hourly_data["cloud_cover (%)"] = hourly_cloud_cover
+hourly_data["wind_speed_10m (km/h)"] = hourly_wind_speed_10m
 hourly_data["weather_code"] = hourly_weather_code
-hourly_data["sunshine_duration"] = hourly_sunshine_duration
-hourly_data["is_day"] = hourly_is_day
+hourly_data["sunshine_duration (seconds)"] = hourly_sunshine_duration
+hourly_data["is_day (1 = yes, 0 = no)"] = hourly_is_day
 
 hourly_dataframe = pd.DataFrame(data = hourly_data)
 print("\nHourly data\n", hourly_dataframe)
