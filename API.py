@@ -55,7 +55,7 @@ hourly_data["relative_humidity_2m (%)"] = hourly_relative_humidity_2m
 hourly_data["cloud_cover (%)"] = hourly_cloud_cover
 hourly_data["wind_speed_10m (km/h)"] = hourly_wind_speed_10m
 hourly_data["sunshine_duration (seconds)"] = hourly_sunshine_duration
-hourly_data["is_day (1 = yes, 0 = no)"] = hourly_is_day
+hourly_data["is_day (1=yes / 0=no)"] = hourly_is_day
 
 hourly_dataframe = pd.DataFrame(data = hourly_data)
 
