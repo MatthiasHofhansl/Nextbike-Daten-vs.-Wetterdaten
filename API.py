@@ -22,7 +22,7 @@ params = {
 	"longitude": 8.4044,
 	"start_date": "2025-09-14",
 	"end_date": "2025-10-10",
-	"hourly": ["temperature_2m", "rain", "snowfall", "relative_humidity_2m", "cloud_cover", "wind_speed_10m", "weather_code", "sunshine_duration", "is_day"],
+	"hourly": ["temperature_2m", "rain", "snowfall", "relative_humidity_2m", "cloud_cover", "wind_speed_10m", "sunshine_duration", "is_day"],
 	"timezone": "Europe/Berlin",
 }
 responses = openmeteo.weather_api(url, params=params)
@@ -38,9 +38,8 @@ hourly_snowfall = hourly.Variables(2).ValuesAsNumpy()
 hourly_relative_humidity_2m = hourly.Variables(3).ValuesAsNumpy()
 hourly_cloud_cover = hourly.Variables(4).ValuesAsNumpy()
 hourly_wind_speed_10m = hourly.Variables(5).ValuesAsNumpy()
-hourly_weather_code = hourly.Variables(6).ValuesAsNumpy()
-hourly_sunshine_duration = hourly.Variables(7).ValuesAsNumpy()
-hourly_is_day = hourly.Variables(8).ValuesAsNumpy()
+hourly_sunshine_duration = hourly.Variables(6).ValuesAsNumpy()
+hourly_is_day = hourly.Variables(7).ValuesAsNumpy()
 
 hourly_data = {"date": pd.date_range(
 	start = pd.to_datetime(hourly.Time(), unit = "s", utc = True),
@@ -55,7 +54,6 @@ hourly_data["snowfall (mm)"] = hourly_snowfall
 hourly_data["relative_humidity_2m (%)"] = hourly_relative_humidity_2m
 hourly_data["cloud_cover (%)"] = hourly_cloud_cover
 hourly_data["wind_speed_10m (km/h)"] = hourly_wind_speed_10m
-hourly_data["weather_code"] = hourly_weather_code
 hourly_data["sunshine_duration (seconds)"] = hourly_sunshine_duration
 hourly_data["is_day (1 = yes, 0 = no)"] = hourly_is_day
 
