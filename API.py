@@ -4,6 +4,7 @@
 # pip install requests-cache retry-requests numpy pandas
 
 import openmeteo_requests # Braucht man für den Abruf der Wetterdaten für Karlsruhe
+
 import pandas as pd # Zur Datenanalyse
 import requests_cache # Gut für API-Abfragen, damit Prozesse schneller Ablaufen
 from retry_requests import retry # Bei Fehlern in der API-Abfrage
@@ -21,7 +22,7 @@ params = {
 	"longitude": 8.4044,
 	"start_date": "2025-09-14",
 	"end_date": "2025-10-10",
-	"hourly": ["temperature_2m", "rain", "cloud_cover", "wind_speed_10m", "relative_humidity_2m"],
+	"hourly": ["temperature_2m", "rain", "snowfall", "relative_humidity_2m", "cloud_cover", "wind_speed_10m", "weather_code", "sunshine_duration", "is_day"],
 	"timezone": "Europe/Berlin",
 }
 responses = openmeteo.weather_api(url, params=params)
@@ -37,9 +38,13 @@ print(f"Timezone difference to GMT+0: {response.UtcOffsetSeconds()}s")
 hourly = response.Hourly()
 hourly_temperature_2m = hourly.Variables(0).ValuesAsNumpy()
 hourly_rain = hourly.Variables(1).ValuesAsNumpy()
-hourly_cloud_cover = hourly.Variables(2).ValuesAsNumpy()
-hourly_wind_speed_10m = hourly.Variables(3).ValuesAsNumpy()
-hourly_relative_humidity_2m = hourly.Variables(4).ValuesAsNumpy()
+hourly_snowfall = hourly.Variables(2).ValuesAsNumpy()
+hourly_relative_humidity_2m = hourly.Variables(3).ValuesAsNumpy()
+hourly_cloud_cover = hourly.Variables(4).ValuesAsNumpy()
+hourly_wind_speed_10m = hourly.Variables(5).ValuesAsNumpy()
+hourly_weather_code = hourly.Variables(6).ValuesAsNumpy()
+hourly_sunshine_duration = hourly.Variables(7).ValuesAsNumpy()
+hourly_is_day = hourly.Variables(8).ValuesAsNumpy()
 
 hourly_data = {"date": pd.date_range(
 	start = pd.to_datetime(hourly.Time(), unit = "s", utc = True),
@@ -50,12 +55,16 @@ hourly_data = {"date": pd.date_range(
 
 hourly_data["temperature_2m"] = hourly_temperature_2m
 hourly_data["rain"] = hourly_rain
+hourly_data["snowfall"] = hourly_snowfall
+hourly_data["relative_humidity_2m"] = hourly_relative_humidity_2m
 hourly_data["cloud_cover"] = hourly_cloud_cover
 hourly_data["wind_speed_10m"] = hourly_wind_speed_10m
-hourly_data["relative_humidity_2m"] = hourly_relative_humidity_2m
+hourly_data["weather_code"] = hourly_weather_code
+hourly_data["sunshine_duration"] = hourly_sunshine_duration
+hourly_data["is_day"] = hourly_is_day
 
 hourly_dataframe = pd.DataFrame(data = hourly_data)
-#print("\nHourly data\n", hourly_dataframe)
+print("\nHourly data\n", hourly_dataframe)
 
 # Save data to CSV
 hourly_dataframe.to_csv("weather_data.csv", index=False)
