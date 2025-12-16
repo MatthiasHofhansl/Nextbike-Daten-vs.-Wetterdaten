@@ -29,10 +29,6 @@ responses = openmeteo.weather_api(url, params=params)
 
 # Process first location. Add a for-loop for multiple locations or weather models
 response = responses[0]
-print(f"Coordinates: {response.Latitude()}°N {response.Longitude()}°E")
-print(f"Elevation: {response.Elevation()} m asl")
-print(f"Timezone: {response.Timezone()}{response.TimezoneAbbreviation()}")
-print(f"Timezone difference to GMT+0: {response.UtcOffsetSeconds()}s")
 
 # Process hourly data. The order of variables needs to be the same as requested.
 hourly = response.Hourly()
@@ -64,8 +60,7 @@ hourly_data["sunshine_duration (seconds)"] = hourly_sunshine_duration
 hourly_data["is_day (1 = yes, 0 = no)"] = hourly_is_day
 
 hourly_dataframe = pd.DataFrame(data = hourly_data)
-print("\nHourly data\n", hourly_dataframe)
 
 # Save data to CSV
 hourly_dataframe.to_csv("weather_data.csv", index=False)
-print("\nDaten gespeichert in: weather_data.csv")
+print("Daten gespeichert in: weather_data.csv")
