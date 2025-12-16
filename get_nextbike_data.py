@@ -7,6 +7,9 @@ import pandas as pd
 import os
 
 # Pfad zur Database (im übergeordneten Ordner, relativ zum Script)
+# __file__ enthält den Pfad zur aktuell ausgeführten Datei. os.path.abspath wandelt den Pfad in einen absoluten Pfad um.
+# os.path.dirname extrahiert nur das Verzeichnis (Also ohne den Dateinamen)
+# Zeile darunter geht quasi ein Ordner hoch und dann wird hier nach der Database gesucht
 script_dir = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(script_dir, "..", "nextbike_data_old.db")
 
