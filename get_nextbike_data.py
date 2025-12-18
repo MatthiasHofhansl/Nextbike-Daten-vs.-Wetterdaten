@@ -5,13 +5,13 @@
 import sqlite3
 import pandas as pd
 import os
+import sys
 
-# Pfad zur Database (im übergeordneten Ordner, relativ zum Script)
-# __file__ enthält den Pfad zur aktuell ausgeführten Datei. os.path.abspath wandelt den Pfad in einen absoluten Pfad um.
-# os.path.dirname extrahiert nur das Verzeichnis (Also ohne den Dateinamen)
-# Zeile darunter geht quasi ein Ordner hoch und dann wird hier nach der Database gesucht
-script_dir = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(script_dir, "..", "nextbike_data_old.db")
+# Pfad zur Database als Kommandozeilenargument
+if len(sys.argv) < 2:
+    print("Usage: python get_nextbike_data.py <database_path>")
+    sys.exit(1)
+db_path = sys.argv[1]
 
 # Prüfen ob die Database existiert
 if not os.path.exists(db_path):
