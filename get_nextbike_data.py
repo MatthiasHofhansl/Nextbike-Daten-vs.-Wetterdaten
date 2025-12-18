@@ -21,8 +21,8 @@ if not os.path.exists(db_path):
 # Verbindung zur Database herstellen
 conn = sqlite3.connect(db_path)
 
-# Liste der zu exportierenden Tabellen
-tables = ["bike_locations", "city_summaries", "stations"]
+# Nur die Tabelle city_summaries wird exportiert
+tables = ["city_summaries"]
 
 print("Starte Export der Tabellen...")
 
