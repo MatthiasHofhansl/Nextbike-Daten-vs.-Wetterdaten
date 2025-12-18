@@ -24,8 +24,8 @@ def start_interface():
     root.title("Verknüpfung von Nextbike-Daten mit Wetterdaten")
 
     # Set window size and center
-    window_width = 400
-    window_height = 200
+    window_width = 500
+    window_height = 500
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     x = (screen_width - window_width) // 2
