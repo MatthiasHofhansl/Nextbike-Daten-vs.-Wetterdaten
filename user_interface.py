@@ -25,7 +25,7 @@ def start_interface():
 
     # Set window size and center
     window_width = 500
-    window_height = 500
+    window_height = 150
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     x = (screen_width - window_width) // 2
@@ -33,9 +33,9 @@ def start_interface():
     root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
     btn_select = tk.Button(root, text="Select Database", command=select_db)
-    btn_select.pack(pady=20)
+    btn_select.pack(side='top', pady=30)
 
     btn_analyse = tk.Button(root, text="Analyse starten", command=start_analysis, state='disabled')
-    btn_analyse.pack(pady=20)
+    btn_analyse.pack(side='bottom', fill='x', pady=0)
 
     root.mainloop()
