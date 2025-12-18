@@ -23,6 +23,18 @@ merged_df = pd.merge_asof(
     direction='nearest'
 )
 
+# Rename columns to simpler names
+merged_df.rename(columns={
+    'temperature_2m (°C)': 'temperature_2m',
+    'rain (mm)': 'rain',
+    'snowfall (mm)': 'snowfall',
+    'relative_humidity_2m (%)': 'relative_humidity_2m',
+    'cloud_cover (%)': 'cloud_cover',
+    'wind_speed_10m (km/h)': 'wind_speed_10m',
+    'sunshine_duration (seconds)': 'sunshine_duration',
+    'is_day (1=yes / 0=no)': 'is_day'
+}, inplace=True)
+
 # Group by timestamp and aggregate (in case of multiple cities)
 merged_df = merged_df.groupby('timestamp').agg({
     'booked_bikes': 'mean',
