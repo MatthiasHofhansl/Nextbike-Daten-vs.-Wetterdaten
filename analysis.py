@@ -511,4 +511,4 @@ print(f"  Difference      → {dry_avg - rainy_avg:6.2f} bikes ({(dry_avg - rain
 
 print("\n✓ Analysis complete!")
 
-plt.show()
+# plt.show()  # Commented out to prevent opening plots, only save them
