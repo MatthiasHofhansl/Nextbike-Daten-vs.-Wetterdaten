@@ -63,6 +63,10 @@ hourly_dataframe = pd.DataFrame(data = hourly_data)
 hourly_dataframe['hour'] = hourly_dataframe['date'].dt.strftime('%H:%M:%S')
 hourly_dataframe['date'] = hourly_dataframe['date'].dt.date
 
+# Reorder columns to have hour right after date
+cols = ['date', 'hour'] + [col for col in hourly_dataframe.columns if col not in ['date', 'hour']]
+hourly_dataframe = hourly_dataframe[cols]
+
 # Save data to CSV
 hourly_dataframe.to_csv("weather_data.csv", index=False)
 print("Daten gespeichert in: weather_data.csv")
