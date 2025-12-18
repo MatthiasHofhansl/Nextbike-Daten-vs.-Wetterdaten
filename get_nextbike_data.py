@@ -24,8 +24,6 @@ conn = sqlite3.connect(db_path)
 # Nur die Tabelle city_summaries wird exportiert
 tables = ["city_summaries"]
 
-print("Starte Export der Tabellen...")
-
 for table in tables:
     try:
         # Tabelle als DataFrame laden
@@ -64,15 +62,8 @@ for table in tables:
         csv_filename = f"{table}.csv"
         df.to_csv(csv_filename, index=False, encoding='utf-8')
 
-        # Informationen ausgeben
-        rows = len(df)
-        file_size = os.path.getsize(csv_filename) / (1024 * 1024)  # in MB
-        print(f"✓ {table}: {rows} Zeilen exportiert → {csv_filename} ({file_size:.2f} MB)")
-
     except Exception as e:
         print(f"✗ Fehler beim Export von {table}: {e}")
 
 # Verbindung schließen
 conn.close()
-
-print("\nExport abgeschlossen!")

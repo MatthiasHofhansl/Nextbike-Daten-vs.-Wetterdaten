@@ -69,4 +69,3 @@ hourly_dataframe = hourly_dataframe[cols]
 
 # Save data to CSV
 hourly_dataframe.to_csv("weather_data.csv", index=False)
-print("Daten gespeichert in: weather_data.csv")
