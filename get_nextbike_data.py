@@ -57,6 +57,9 @@ for table in tables:
         df['set_point_bikes'] = df['set_point_bikes'].round().astype(int)
         df['num_places'] = df['num_places'].round().astype(int)
 
+        # Format hour as HH:MM:SS
+        df['hour'] = df['hour'].apply(lambda h: f"{h:02d}:00:00")
+
         # Als CSV speichern
         csv_filename = f"{table}.csv"
         df.to_csv(csv_filename, index=False, encoding='utf-8')
