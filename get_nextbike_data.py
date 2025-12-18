@@ -30,16 +30,35 @@ for table in tables:
     try:
         # Tabelle als DataFrame laden
         df = pd.read_sql_query(f"SELECT * FROM {table}", conn)
-        
+
+        # Timestamp parsen und date/hour extrahieren
+        df['timestamp'] = pd.to_datetime(df['timestamp'])
+        df['date'] = df['timestamp'].dt.date
+        df['hour'] = df['timestamp'].dt.hour
+
+        # Nach date und hour gruppieren und Mittelwerte berechnen
+        grouped = df.groupby(['date', 'hour']).agg({
+            'total_bikes': 'mean',
+            'available_bikes': 'mean',
+            'booked_bikes': 'mean',
+            'set_point_bikes': 'mean',
+            'num_places': 'mean',
+            'city_uid': 'first',
+            'city_name': 'first',
+            'country_name': 'first'
+        }).reset_index()
+
+        df = grouped
+
         # Als CSV speichern
         csv_filename = f"{table}.csv"
         df.to_csv(csv_filename, index=False, encoding='utf-8')
-        
+
         # Informationen ausgeben
         rows = len(df)
         file_size = os.path.getsize(csv_filename) / (1024 * 1024)  # in MB
         print(f"✓ {table}: {rows} Zeilen exportiert → {csv_filename} ({file_size:.2f} MB)")
-        
+
     except Exception as e:
         print(f"✗ Fehler beim Export von {table}: {e}")
 
