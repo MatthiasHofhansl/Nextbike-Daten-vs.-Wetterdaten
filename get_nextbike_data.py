@@ -50,12 +50,12 @@ for table in tables:
 
         df = grouped
 
-        # Runden der spezifischen Spalten
-        df['total_bikes'] = df['total_bikes'].round()
-        df['available_bikes'] = df['available_bikes'].round()
-        df['booked_bikes'] = df['booked_bikes'].round()
-        df['set_point_bikes'] = df['set_point_bikes'].round()
-        df['num_places'] = df['num_places'].round()
+        # Runden der spezifischen Spalten und zu int konvertieren, um .0 zu vermeiden
+        df['total_bikes'] = df['total_bikes'].round().astype(int)
+        df['available_bikes'] = df['available_bikes'].round().astype(int)
+        df['booked_bikes'] = df['booked_bikes'].round().astype(int)
+        df['set_point_bikes'] = df['set_point_bikes'].round().astype(int)
+        df['num_places'] = df['num_places'].round().astype(int)
 
         # Als CSV speichern
         csv_filename = f"{table}.csv"
