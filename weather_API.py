@@ -59,6 +59,10 @@ hourly_data["is_day (1=yes / 0=no)"] = hourly_is_day
 
 hourly_dataframe = pd.DataFrame(data = hourly_data)
 
+# Split date into date and hour
+hourly_dataframe['hour'] = hourly_dataframe['date'].dt.strftime('%H:%M:%S')
+hourly_dataframe['date'] = hourly_dataframe['date'].dt.date
+
 # Save data to CSV
 hourly_dataframe.to_csv("weather_data.csv", index=False)
 print("Daten gespeichert in: weather_data.csv")
