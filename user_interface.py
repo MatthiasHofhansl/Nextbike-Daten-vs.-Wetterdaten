@@ -9,7 +9,7 @@ def start_interface():
 
     def select_db():
         nonlocal db_path
-        db_path = filedialog.askopenfilename(title="Select Database", filetypes=[("SQLite files", "*.db")])
+        db_path = filedialog.askopenfilename(title="Datenbank auswählen", filetypes=[("SQLite files", "*.db")])
         if db_path:
             filename = os.path.basename(db_path)
             label.config(text=filename)
@@ -18,14 +18,14 @@ def start_interface():
     def start_analysis():
         if db_path:
             def run_scripts():
-                print("Starting get_nextbike_data.py...")
+                print("Speichere Nextbike-Daten in die Datenbank.")
                 subprocess.run(["python", "get_nextbike_data.py", db_path])
-                print("Starting weather_API.py...")
+                print("Speichere dazugehörige Wetterdaten in die Datenbank.")
                 subprocess.run(["python", "weather_API.py", db_path])
-                print("All scripts completed.")
-                print("Starting analysis.py...")
+                print("Nextbike-Daten und Wetterdaten erfolgreich abgespeichert.")
+                print("Starte Analyse.")
                 subprocess.run(["python", "analysis.py"])
-                print("Analysis completed.")
+                print("Analyse abgeschlossen.")
                 root.destroy()
             threading.Thread(target=run_scripts).start()
 

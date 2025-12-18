@@ -117,7 +117,6 @@ for idx, day_type in enumerate(day_types):
 
 plt.tight_layout()
 plt.savefig('01_day_type_comparison.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: 01_day_type_comparison.png")
 
 # ============================================================================
 # FIGURE 2: Temperature Impact Analysis (from visualize_analysis.py)
@@ -179,7 +178,6 @@ plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right', fontsize=8)
 
 plt.tight_layout()
 plt.savefig('02_temperature_impact.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: 02_temperature_impact.png")
 
 # ============================================================================
 # FIGURE 3: Precipitation Impact Analysis (from visualize_analysis.py)
@@ -215,7 +213,6 @@ ax.grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.savefig('03_precipitation_impact.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: 03_precipitation_impact.png")
 
 # ============================================================================
 # FIGURE 4: Correlation Analysis (from visualize_analysis.py)
@@ -280,7 +277,6 @@ ax.set_ylim(-1, 1)
 
 plt.tight_layout()
 plt.savefig('04_correlation_analysis.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: 04_correlation_analysis.png")
 
 # ============================================================================
 # FIGURE 5: Overall Time Series (from visualize.py)
@@ -373,7 +369,6 @@ for ax in axes5:
 
 plt.tight_layout()
 plt.savefig('05_overall_time_series.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: 05_overall_time_series.png")
 
 # ============================================================================
 # FIGURE 6: Period Comparison (from visualize.py)
@@ -450,7 +445,6 @@ for ax in axes6:
 
 plt.tight_layout()
 plt.savefig('06_period_comparison.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: 06_period_comparison.png")
 
 # ============================================================================
 # Print Summary Statistics
@@ -508,7 +502,5 @@ rainy_avg = merged_df[merged_df['rain_condition'] == 'Rainy']['booked_bikes'].me
 print(f"  Dry conditions  → {dry_avg:6.2f} bikes avg")
 print(f"  Rainy conditions → {rainy_avg:6.2f} bikes avg")
 print(f"  Difference      → {dry_avg - rainy_avg:6.2f} bikes ({(dry_avg - rainy_avg)/rainy_avg*100:.1f}% more)")
-
-print("\n✓ Analysis complete!")
 
 # plt.show()  # Commented out to prevent opening plots, only save them
