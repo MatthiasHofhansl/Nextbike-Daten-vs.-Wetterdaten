@@ -21,7 +21,7 @@ def start_interface():
         root.destroy()
 
     root = tk.Tk()
-    root.title("Nextbike Data Processor")
+    root.title("Verknüpfung von Nextbike-Daten mit Wetterdaten")
 
     # Set window size and center
     window_width = 400
