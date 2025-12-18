@@ -26,7 +26,7 @@ def start_interface():
                 print("Starte Analyse.")
                 subprocess.run(["python", "analysis.py"])
                 print("Analyse abgeschlossen.")
-                root.destroy()
+                root.quit()
             threading.Thread(target=run_scripts).start()
 
     root = tk.Tk()
