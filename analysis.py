@@ -6,18 +6,14 @@ import matplotlib.dates as mdates
 from scipy.stats import pearsonr
 
 # Load data
-bikes_df = pd.read_csv('exports/city_summaries_hourly.csv')
+bikes_df = pd.read_csv('city_summaries.csv')
 weather_df = pd.read_csv('weather_data.csv')
 
-# Convert timestamp columns to datetime
-bikes_df['timestamp'] = pd.to_datetime(bikes_df['timestamp'])
-# Weather data is in UTC, convert to local time (UTC+2 for CEST, UTC+1 for CET)
-weather_df['date'] = pd.to_datetime(weather_df['date'], utc=True)
-# Convert UTC to local time (assuming Europe/Berlin timezone)
-weather_df['date'] = weather_df['date'].dt.tz_convert('Europe/Berlin').dt.tz_localize(None)
+# Create timestamp from date and hour for bikes_df
+bikes_df['timestamp'] = pd.to_datetime(bikes_df['date'] + ' ' + bikes_df['hour'])
 
-# Rename weather column for clarity
-weather_df.rename(columns={'date': 'timestamp'}, inplace=True)
+# Create timestamp from date and hour for weather_df
+weather_df['timestamp'] = pd.to_datetime(weather_df['date'] + ' ' + weather_df['hour'])
 
 # Merge data on timestamp
 merged_df = pd.merge_asof(
