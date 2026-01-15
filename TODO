@@ -1,0 +1,5 @@
+Analysen:
+- Metriken: Durchschnittsausleihen nach Datum/Tagen/Tagesart/Uhrzeit (Hauptpendeltage und Zeit)
+- Visualisierungen: Heatmap Uhrzeit/Wochentag (Durchschnittausleihen), Regen und Temperatur vs. Trocken (Verteilung der Ausleihen),
+                    Windgeschwindigkeit vs. Windstille (Verteilung der Ausleihen)
+
